@@ -1,0 +1,133 @@
+
+
+package com.mycompany.ac1;
+
+public class Ac1 {
+
+public static void main(String[] args) {
+        
+        
+        Pokemon charizard = new Pokemon("charizard", "Fogo", 50);
+        Pokemon squirtle = new Pokemon("squirtle", "Agua", 20);
+        Pokemon diglett = new Pokemon("diglett", "Terra", 30);
+        Pokemon jynx = new Pokemon("jynx", "Gelo", 10);
+        
+        
+        
+}}
+
+package com.mycompany.ac1;
+
+
+public class Pokemon {
+   //atributos
+   String nome;
+    String tipo;
+    double HP ;
+    double def;
+    double atk;
+    int lvl;
+    
+        //construtor
+    public Pokemon(String nome, String tipo, int lvl) {
+        
+        
+        this.nome = nome;
+        this.tipo = tipo;     
+        this.lvl = lvl;
+        
+        calculaAtributos();   
+        calculaLevel();
+        imprimeAtributos();
+       
+        
+    }
+
+    
+    //métodos
+    
+    
+    
+public void imprimeAtributos(){
+    System.out.println("Nome: " + this.nome);
+    System.out.println("Tipo: " + this.tipo);
+    System.out.println("Vida: " + this.HP);
+    System.out.println("Atk: " + this.atk);
+    System.out.println("Defesa: " + this.def);
+    System.out.println("Level: " + this.lvl + "\n");                        
+}
+    
+public void calculaAtributos(){
+    switch(this.tipo)
+        {
+        case "Fogo" : {
+            this.atk = 100;
+            this.def = 50;
+            this.HP = 200;
+            }
+        break;
+        
+        case "Agua" : {
+            this.atk = 70;
+            this.def = 45;
+            this.HP = 260; // ou this.vida + 60
+            }
+        break;
+        
+        case "Terra" : {
+            this.atk = 65;
+            this.def = 80;
+            this.HP = 210;
+            }
+        break;
+        
+        case "Gelo" : {
+            this.atk = 80;
+            this.def = 65;
+            this.HP = 200; 
+            }
+        break;
+        
+        }    
+    }
+
+public void calculaLevel(){
+        this.HP = HP + (lvl);
+        this.atk = atk +(lvl/2);
+        this.def = def + (lvl/3);
+   
+    }
+
+}
+
+
+package com.mycompany.ac1;
+
+
+public class Batalhas {
+    
+    public void Batalha(Pokemon pokemon1, Pokemon pokemon2){
+              
+        do {
+        System.out.println(pokemon1+" Batalha contra "+pokemon2);
+        pokemon1.HP = pokemon2.atk - pokemon1.def;
+        pokemon2.HP = pokemon1.atk - pokemon2.def;
+        System.out.println("vida do: " + pokemon1 + "é: " + pokemon1.HP);
+        System.out.println("vida do: " + pokemon2 + "é: " + pokemon2.HP + "\n");
+        
+        }
+        while (pokemon1.HP >=1 && pokemon2.HP >=1);
+        
+        if(pokemon1.HP < 1)
+            System.out.println(pokemon1 + " perdeu");
+        else
+            System.out.println(pokemon2 + " perdeu");
+        
+    }
+    
+    
+    
+    
+    
+    
+}
